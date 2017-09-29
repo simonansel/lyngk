@@ -17,4 +17,18 @@ Lyngk.Coordinates = function (c, l) {
         return lyngk[l - 1].indexOf(c) !== -1;
     }
 
+    this.get_letter = function(){
+        return c;
+    }
+
+    this.get_number = function(){
+        return l;
+    }
+
+    this.toString = function(){
+        if(this.is_valid())
+            return c + l;
+        else
+            return "invalid";
+    }
 };
