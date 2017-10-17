@@ -42,3 +42,18 @@ LyngkTestCase.prototype.testStory5 = function() {
     assertEquals("A", coordinatesClone.get_letter());
     assertEquals("3", coordinatesClone.get_number());
 };
+
+LyngkTestCase.prototype.testStory6 = function(){
+    var letters = ["A", "B", "C", "D", "E", "F", "G","H", "I"];
+    var tabEntier = new Array();
+    for(var i = 0 ; i < 9 ; i++) {
+        for (var j = 1; j <= 9; j++) {
+            var entierTest = (new Lyngk.Coordinates(letters[i], j)).hash();
+            if (entierTest != 0 && tabEntier.indexOf(entierTest) == -1) {
+                tabEntier.push(entierTest);
+
+            }
+        }
+    }
+    assertEquals(43, tabEntier.length);
+}

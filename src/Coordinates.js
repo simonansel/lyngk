@@ -29,6 +29,30 @@ Lyngk.Coordinates = function (c, l) {
         return new Lyngk.Coordinates(this.get_letter(), this.get_number());
     }
 
+    this.hash = function(){
+        var letters = ["A", "B", "C", "D", "E", "F", "G","H", "I"];
+        if(this.is_valid()){
+            var resultString = (letters.indexOf(this.get_letter())+1).toString()+this.get_number().toString();
+            return parseInt(resultString);
+        }
+        return 0;
+
+
+
+        /*var resultEntier = 0;
+        for(var i = 0 ; i < 9 ; i++){
+            for(var j = 1 ; j <= 9 ; j++){
+                if((new Lyngk.Coordinates(letters[i], j)).is_valid()){
+                     resultEntier++;
+                    if(letters[i] == this.get_letter() && j == this.get_number()) {
+                        return resultEntier;
+                    }
+                }
+            }
+        }
+        return 0;*/
+    }
+
     this.toString = function(){
         if(this.is_valid())
             return c + l;
