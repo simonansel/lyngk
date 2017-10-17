@@ -51,9 +51,14 @@ LyngkTestCase.prototype.testStory6 = function(){
             var entierTest = (new Lyngk.Coordinates(letters[i], j)).hash();
             if (entierTest != 0 && tabEntier.indexOf(entierTest) == -1) {
                 tabEntier.push(entierTest);
-
             }
         }
     }
     assertEquals(43, tabEntier.length);
-}
+};
+
+LyngkTestCase.prototype.testStory7 = function() {
+    var intersection = new Lyngk.Intersection();
+    assertEquals(0, intersection.get_actualState());
+};
+
