@@ -57,8 +57,16 @@ LyngkTestCase.prototype.testStory6 = function(){
     assertEquals(43, tabEntier.length);
 };
 
-LyngkTestCase.prototype.testStory7 = function() {
+LyngkTestCase.prototype.testStory7 = function(){
     var intersection = new Lyngk.Intersection();
-    assertEquals(0, intersection.get_actualState());
+    assertEquals(Lyngk.State.VACANT, intersection.get_actualState());
 };
 
+LyngkTestCase.prototype.testStory8 = function(){
+    var piece = new Lyngk.Piece();
+    piece.set_color(Lyngk.Colors.BLEU);
+    var intersection = new Lyngk.Intersection();
+    intersection.pose(piece);
+    assertEquals(Lyngk.State.ONE_PIECE, intersection.get_actualState());
+    assertEquals(Lyngk.Colors.BLEU , intersection.get_color());
+}
