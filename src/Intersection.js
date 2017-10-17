@@ -21,7 +21,10 @@ Lyngk.Intersection = function () {
     }
 
     this.pose = function (piece) {
-        actualState = Lyngk.State.ONE_PIECE;
+        if(actualState == Lyngk.State.VACANT)
+            actualState = Lyngk.State.ONE_PIECE;
+        else
+            actualState = Lyngk.State.STACK;
         color = piece.get_color();
     };
 
