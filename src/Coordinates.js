@@ -25,6 +25,10 @@ Lyngk.Coordinates = function (c, l) {
         return l;
     }
 
+    this.clone = function(){
+        return new Lyngk.Coordinates(this.get_letter(), this.get_number());
+    }
+
     this.toString = function(){
         if(this.is_valid())
             return c + l;

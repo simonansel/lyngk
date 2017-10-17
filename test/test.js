@@ -30,3 +30,15 @@ LyngkTestCase.prototype.testStory3 = function () {
     var coordinates = new Lyngk.Coordinates('A', 3);
     assertEquals("A3", coordinates);
 };
+
+LyngkTestCase.prototype.testStory4 = function() {
+    var coordinates = new Lyngk.Coordinates('A', 1);
+    assertEquals("invalid", coordinates);
+};
+
+LyngkTestCase.prototype.testStory5 = function() {
+    var coordinates = new Lyngk.Coordinates('A', 3);
+    var coordinatesClone = coordinates.clone();
+    assertEquals("A", coordinatesClone.get_letter());
+    assertEquals("3", coordinatesClone.get_number());
+};
