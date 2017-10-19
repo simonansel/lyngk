@@ -97,28 +97,10 @@ LyngkTestCase.prototype.testStory10 = function() {
 
 LyngkTestCase.prototype.testStory11 = function() {
     var engine = new Lyngk.Engine();
-    var tabTest = [];
-    var letters = ["A", "B", "C", "D", "E", "F", "G","H", "I"];
-    for(var i = 0 ; i < 9 ; i++) {
-        for (var j = 1; j <= 9; j++) {
-            var coordinate = new Lyngk.Coordinates(letters[i], j);
-
-            if (coordinate.is_valid()) {
-                var intersection = new Lyngk.Intersection();
-                intersection.set_coordinate(coordinate);
-                intersection.pose(new Lyngk.Piece());
-                tabTest.push(intersection);
-            }
-        }
-    }
-
-    var test;
     var intersections = engine.get_intersections();
-    for(var i = 0 ; i < tabTest.length ; i++ ){
-        if( (intersections[i].get_coordinate().get_letter() === tabTest[i].get_coordinate().get_letter())
-                && (intersections[i].get_coordinate().get_number() === tabTest[i].get_coordinate().get_number())
-            && (intersections[i].get_actualState() === tabTest[i].get_actualState())
-        && intersections[i].get_pieces().length === 1 )
+    var test;
+    for(var i = 0 ; i < intersections.length ; i++){
+        if(intersections[i].get_actualState() === Lyngk.State.ONE_PIECE && intersections[i].get_pieces().length === 1)
             test = true;
         else{
             test = false;
@@ -126,6 +108,7 @@ LyngkTestCase.prototype.testStory11 = function() {
         }
 
     }
+
     assertEquals(true,test);
 };
 
