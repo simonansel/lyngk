@@ -45,11 +45,11 @@ LyngkTestCase.prototype.testStory5 = function() {
 
 LyngkTestCase.prototype.testStory6 = function(){
     var letters = ["A", "B", "C", "D", "E", "F", "G","H", "I"];
-    var tabEntier = new Array();
+    var tabEntier = [];
     for(var i = 0 ; i < 9 ; i++) {
         for (var j = 1; j <= 9; j++) {
             var entierTest = (new Lyngk.Coordinates(letters[i], j)).hash();
-            if (entierTest != 0 && tabEntier.indexOf(entierTest) == -1) {
+            if (entierTest !== 0 && tabEntier.indexOf(entierTest) === -1) {
                 tabEntier.push(entierTest);
             }
         }
@@ -97,7 +97,7 @@ LyngkTestCase.prototype.testStory10 = function() {
 
 LyngkTestCase.prototype.testStory11 = function() {
     var engine = new Lyngk.Engine();
-    var tabTest = new Array();
+    var tabTest = [];
     var letters = ["A", "B", "C", "D", "E", "F", "G","H", "I"];
     for(var i = 0 ; i < 9 ; i++) {
         for (var j = 1; j <= 9; j++) {
@@ -115,10 +115,10 @@ LyngkTestCase.prototype.testStory11 = function() {
     var test;
     var intersections = engine.get_intersections();
     for(var i = 0 ; i < tabTest.length ; i++ ){
-        if( (intersections[i].get_coordinate().get_letter() == tabTest[i].get_coordinate().get_letter())
-                && (intersections[i].get_coordinate().get_number() == tabTest[i].get_coordinate().get_number())
-            && (intersections[i].get_actualState() == tabTest[i].get_actualState())
-        && intersections[i].get_nbPiece() == 1 )
+        if( (intersections[i].get_coordinate().get_letter() === tabTest[i].get_coordinate().get_letter())
+                && (intersections[i].get_coordinate().get_number() === tabTest[i].get_coordinate().get_number())
+            && (intersections[i].get_actualState() === tabTest[i].get_actualState())
+        && intersections[i].get_pieces().length === 1 )
             test = true;
         else{
             test = false;
@@ -129,3 +129,39 @@ LyngkTestCase.prototype.testStory11 = function() {
     assertEquals(true,test);
 };
 
+LyngkTestCase.prototype.testStory12 = function() {
+    var engine = new Lyngk.Engine();
+    var nbBlack = 0;
+    var nbBlue = 0;
+    var nbRed = 0;
+    var nbIvory= 0;
+    var nbGreen = 0;
+    var nbWhite = 0;
+
+    var intersections = engine.get_intersections();
+    for(var i = 0 ; i < intersections.length ; i++){
+        if(intersections[i].get_color() === Lyngk.Color.BLACK)
+            nbBlack++;
+        if(intersections[i].get_color() === Lyngk.Color.BLUE)
+            nbBlue++;
+        if(intersections[i].get_color() === Lyngk.Color.RED)
+            nbRed++;
+        if(intersections[i].get_color() === Lyngk.Color.IVORY)
+            nbIvory++;
+        if(intersections[i].get_color() === Lyngk.Color.GREEN)
+            nbGreen++;
+        if(intersections[i].get_color() === Lyngk.Color.WHITE)
+            nbWhite++;
+    }
+    var test = false;
+    if(intersections.length === 43) {
+        if (nbBlack === Lyngk.NbColor.BLACK
+            && nbBlue === Lyngk.NbColor.BLUE
+            && nbRed === Lyngk.NbColor.RED
+            && nbIvory === Lyngk.NbColor.IVORY
+            && nbGreen === Lyngk.NbColor.GREEN
+            && nbWhite === Lyngk.NbColor.WHITE)
+            test = true;
+    }
+    assertEquals(true,test);
+};
