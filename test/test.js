@@ -148,3 +148,20 @@ LyngkTestCase.prototype.testStory12 = function() {
     }
     assertEquals(true,test);
 };
+
+LyngkTestCase.prototype.testStory13 = function() {
+    var engine = new Lyngk.Engine();
+
+    var intersections = engine.get_intersections();
+    var test;
+    for(var i = 0 ; i < intersections.length ; i++){
+        if(intersections[i].get_height() === 1)
+            test = true;
+        else{
+            test = false;
+            break;
+        }
+    }
+
+    assertTrue(test);
+};
