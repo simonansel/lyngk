@@ -27,5 +27,16 @@ Lyngk.Engine = function () {
 
     this.get_intersections = function(){
         return intersections;
-    }
+    };
+
+    this.get_indexintersection = function(coo){
+        for(var i = 0 ; i < intersections.length ; i++){
+            if(intersections[i].get_coordinate().toString() === coo.toString())
+                return i;
+        }
+    };
+
+    this.move = function(coo1 , coo2){
+        intersections[this.get_indexintersection(coo1)].retire(intersections[this.get_indexintersection(coo2)]);
+    };
 };

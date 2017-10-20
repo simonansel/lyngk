@@ -30,6 +30,10 @@ Lyngk.Intersection = function () {
         coordinate = coo;
     };
 
+    this.get_coordinate = function(){
+        return coordinate;
+    };
+
     this.get_height = function(){
         return pieces.length;
     };
@@ -48,6 +52,12 @@ Lyngk.Intersection = function () {
                 }
             }
         }
+    };
+
+    this.retire = function(intersection){
+        actualState = Lyngk.State.VACANT;
+        intersection.pose(pieces[pieces.length-1]);
+        pieces.pop();
     };
 
 

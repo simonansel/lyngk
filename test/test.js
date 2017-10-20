@@ -184,11 +184,18 @@ LyngkTestCase.prototype.testStory14 = function() {
 
 LyngkTestCase.prototype.testStory15 = function() {
     var engine = new Lyngk.Engine();
-    engine.move("A3", "B3");
+    var coordinateA3 = new Lyngk.Coordinates("A",3);
+    var coordinateB3 = new Lyngk.Coordinates("B",3);
 
-    var oldColorA = engine.get_intersection("A3").get_color();
-    var oldHeightB = engine.get_intersection("B3").get_height();
-    assertTrue(engine.get_intersection("A3").get_actualState() === Lyngk.State.VACANT
-        && engine.get_intersection("B3").get_color() === oldColorA
-        && engine.get_intersection("B3").get_height() === oldHeightB + 1);
+    var intersections = engine.get_intersections();
+    var indexA3 = engine.get_indexintersection(coordinateA3);
+    var indexB3 = engine.get_indexintersection(coordinateB3);
+
+    var oldColorA = intersections[indexA3].get_color();
+    var oldHeightB = intersections[indexB3].get_height();
+    engine.move(coordinateA3, coordinateB3);
+
+    assertTrue(intersections[indexA3].get_actualState() === Lyngk.State.VACANT
+        && intersections[indexB3].get_color() === oldColorA
+        && intersections[indexB3].get_height() === oldHeightB + 1);
 };

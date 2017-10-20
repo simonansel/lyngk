@@ -36,27 +36,12 @@ Lyngk.Coordinates = function (c, l) {
             return parseInt(resultString);
         }
         return 0;
-
-
-
-        /*var resultEntier = 0;
-        for(var i = 0 ; i < 9 ; i++){
-            for(var j = 1 ; j <= 9 ; j++){
-                if((new Lyngk.Coordinates(letters[i], j)).is_valid()){
-                     resultEntier++;
-                    if(letters[i] == this.get_letter() && j == this.get_number()) {
-                        return resultEntier;
-                    }
-                }
-            }
-        }
-        return 0;*/
-    }
+    };
 
     this.toString = function(){
         if(this.is_valid())
             return c + l;
         else
             return "invalid";
-    }
+    };
 };
