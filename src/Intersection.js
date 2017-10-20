@@ -18,9 +18,6 @@ Lyngk.Intersection = function () {
         return actualState;
     };
 
-    this.set_actualState = function(state){
-        actualState = state;
-    };
 
     this.get_color = function(){
         return color;
@@ -29,18 +26,14 @@ Lyngk.Intersection = function () {
     this.get_pieces = function(){
         return pieces;
     };
-
-    this.get_coordinate = function(){
-        return coordinate;
-    };
-
+    
     this.set_coordinate = function(coo){
         coordinate = coo;
     };
 
     this.get_height = function(){
         return pieces.length;
-    }
+    };
 
     this.pose = function (piece) {
         if(actualState !== Lyngk.State.FULL_STACK){
