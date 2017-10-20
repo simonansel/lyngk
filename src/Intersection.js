@@ -38,6 +38,10 @@ Lyngk.Intersection = function () {
         coordinate = coo;
     };
 
+    this.get_height = function(){
+        return pieces.length;
+    }
+
     this.pose = function (piece) {
         if(actualState !== Lyngk.State.FULL_STACK){
             if(actualState === Lyngk.State.VACANT){
