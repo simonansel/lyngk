@@ -5,7 +5,6 @@ Lyngk.State = {VACANT: 0, ONE_PIECE: 1, STACK: 2, FULL_STACK: 3};
 Lyngk.Intersection = function () {
     var coordinate;
     var actualState;
-    var color;
     var pieces = [];
 
     this.init = function() {
@@ -20,13 +19,13 @@ Lyngk.Intersection = function () {
 
 
     this.get_color = function(){
-        return color;
+        return pieces[pieces.length-1].get_color();
     };
 
     this.get_pieces = function(){
         return pieces;
     };
-    
+
     this.set_coordinate = function(coo){
         coordinate = coo;
     };
@@ -48,7 +47,6 @@ Lyngk.Intersection = function () {
                     actualState = Lyngk.State.FULL_STACK;
                 }
             }
-            color = piece.get_color();
         }
     };
 
