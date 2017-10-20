@@ -165,3 +165,19 @@ LyngkTestCase.prototype.testStory13 = function() {
 
     assertTrue(test);
 };
+
+LyngkTestCase.prototype.testStory14 = function() {
+    var engine = new Lyngk.Engine();
+
+    var intersections = engine.get_intersections();
+    var test;
+    for(var i = 0 ; i < intersections.length ; i++){
+        if(intersections[i].get_color() === intersections[i].get_pieces()[intersections[i].get_height() - 1]. get_color())
+            test = true;
+        else{
+            test = false;
+            break;
+        }
+    }
+    assertTrue(test);
+};
