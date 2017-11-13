@@ -17,7 +17,6 @@ Lyngk.Intersection = function () {
         return actualState;
     };
 
-
     this.get_color = function(){
         return pieces[pieces.length-1].get_color();
     };
@@ -56,8 +55,12 @@ Lyngk.Intersection = function () {
 
     this.retire = function(intersection){
         actualState = Lyngk.State.VACANT;
-        intersection.pose(pieces[pieces.length-1]);
-        pieces.pop();
+        for(var i = 0 ; i < pieces.length ; i++ ) {
+            intersection.pose(pieces[i]);
+        }
+        while(pieces.length > 0) {
+            pieces.pop();
+        }
     };
 
 

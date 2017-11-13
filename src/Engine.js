@@ -44,10 +44,13 @@ Lyngk.Engine = function () {
         var numberCoo2 = coo2[1];
         var diffLetters = letters.indexOf(letterCoo1)-letters.indexOf(letterCoo2);
         var diffNumbers = parseInt(numberCoo1)-parseInt(numberCoo2);
+
         if(intersections[this.get_indexintersection(coo2)].get_actualState() !== Lyngk.State.VACANT
             && ((Math.abs(diffLetters) === 1 && Math.abs(diffNumbers) === 0)
                 || (Math.abs(diffLetters) === 0 && Math.abs(diffNumbers) === 1)
-                || diffLetters === 1 && diffNumbers ===1))
+                || diffLetters === 1 && diffNumbers ===1
+                || diffLetters === -1 && diffNumbers === -1)
+            && intersections[this.get_indexintersection(coo1)].get_actualState() !== Lyngk.State.FULL_STACK)
             intersections[this.get_indexintersection(coo1)].retire(intersections[this.get_indexintersection(coo2)]);
     };
 };
