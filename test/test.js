@@ -184,18 +184,33 @@ LyngkTestCase.prototype.testStory14 = function() {
 
 LyngkTestCase.prototype.testStory15 = function() {
     var engine = new Lyngk.Engine();
-    var coordinateA3 = new Lyngk.Coordinates("A",3);
-    var coordinateB3 = new Lyngk.Coordinates("B",3);
 
     var intersections = engine.get_intersections();
-    var indexA3 = engine.get_indexintersection(coordinateA3);
-    var indexB3 = engine.get_indexintersection(coordinateB3);
+    var indexA3 = engine.get_indexintersection("A3");
+    var indexB3 = engine.get_indexintersection("B3");
 
     var oldColorA = intersections[indexA3].get_color();
     var oldHeightB = intersections[indexB3].get_height();
-    engine.move(coordinateA3, coordinateB3);
+    engine.move("A3", "B3");
 
     assertTrue(intersections[indexA3].get_actualState() === Lyngk.State.VACANT
         && intersections[indexB3].get_color() === oldColorA
         && intersections[indexB3].get_height() === oldHeightB + 1);
+};
+
+LyngkTestCase.prototype.testStory16 = function() {
+    var engine = new Lyngk.Engine();
+
+    var intersections = engine.get_intersections();
+    var indexB3 = engine.get_indexintersection("B3");
+    var indexB2 = engine.get_indexintersection("B2");
+
+    engine.move("A3", "B3");
+    var oldColorB3 = intersections[indexB3].get_color();
+    var oldHeightB2 = intersections[indexB2].get_height();
+    engine.move("B3", "B2");
+    assertTrue(intersections[indexB3].get_actualState() === Lyngk.State.VACANT
+        && intersections[indexB2].get_color() === oldColorB3
+        && intersections[indexB2].get_height() === oldHeightB2 + intersections[indexB3].get_height());
+
 };

@@ -31,7 +31,7 @@ Lyngk.Engine = function () {
 
     this.get_indexintersection = function(coo){
         for(var i = 0 ; i < intersections.length ; i++){
-            if(intersections[i].get_coordinate().toString() === coo.toString())
+            if(intersections[i].get_coordinate().toString() === coo)
                 return i;
         }
     };
