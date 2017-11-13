@@ -37,6 +37,7 @@ Lyngk.Engine = function () {
     };
 
     this.move = function(coo1 , coo2){
+        if(!(intersections[this.get_indexintersection(coo2)].get_actualState() === Lyngk.State.VACANT))
         intersections[this.get_indexintersection(coo1)].retire(intersections[this.get_indexintersection(coo2)]);
     };
 };
