@@ -214,3 +214,14 @@ LyngkTestCase.prototype.testStory16 = function() {
         && intersections[indexB2].get_height() === oldHeightB2 + intersections[indexB3].get_height());
 
 };
+
+LyngkTestCase.prototype.testStory17 = function() {
+    var engine = new Lyngk.Engine();
+    var b2 = "B2";
+    var b3 = "B3";
+    engine.move(b3, b2);
+    engine.move(b2, b3);
+
+    var intersections = engine.get_intersections();
+    assertTrue(intersections[engine.get_indexintersection(b3)].get_actualState() === Lyngk.State.VACANT)
+};
