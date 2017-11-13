@@ -233,7 +233,20 @@ LyngkTestCase.prototype.testStory18 = function() {
     engine.move(c2, b3);
 
     var intersections = engine.get_intersections();
-    console.log (intersections[engine.get_indexintersection(b3)].get_actualState());
     assertTrue(intersections[engine.get_indexintersection(b3)].get_actualState() === Lyngk.State.ONE_PIECE
                 && intersections[engine.get_indexintersection(c2)].get_actualState() === Lyngk.State.ONE_PIECE)
+};
+
+LyngkTestCase.prototype.testStory19 = function() {
+    var engine = new Lyngk.Engine();
+    engine.move("I7","H6");
+    engine.move("H6","H5");
+    var intersections = engine.get_intersections();
+    var stateH5 = intersections[engine.get_indexintersection("H5")].get_actualState();
+    engine.move("H5","H8");
+    assertTrue(intersections[engine.get_indexintersection("H5")].get_actualState() === stateH5);
+    engine.move("H5","F5");
+    assertTrue(intersections[engine.get_indexintersection("H5")].get_actualState() === stateH5);
+    engine.move("H5","F3");
+    assertTrue(intersections[engine.get_indexintersection("H5")].get_actualState() === stateH5);
 };
