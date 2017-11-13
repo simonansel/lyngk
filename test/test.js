@@ -233,6 +233,7 @@ LyngkTestCase.prototype.testStory18 = function() {
     engine.move(c2, b3);
 
     var intersections = engine.get_intersections();
+    console.log (intersections[engine.get_indexintersection(b3)].get_actualState());
     assertTrue(intersections[engine.get_indexintersection(b3)].get_actualState() === Lyngk.State.ONE_PIECE
                 && intersections[engine.get_indexintersection(c2)].get_actualState() === Lyngk.State.ONE_PIECE)
 };
