@@ -13,42 +13,37 @@ Lyngk.Intersection = function () {
 
     this.init();
 
-    this.get_actualState = function() {
+    this.getActualState = function() {
         return actualState;
     };
 
-    this.get_color = function(){
-        return pieces[pieces.length-1].get_color();
+    this.getColor = function(){
+        return pieces[pieces.length-1].getColor();
     };
 
-    this.get_pieces = function(){
+    this.getPieces = function(){
         return pieces;
     };
 
-    this.set_coordinate = function(coo){
+    this.setCoordinate = function(coo){
         coordinate = coo;
     };
 
-    this.get_coordinate = function(){
+    this.getCoordinate = function(){
         return coordinate;
     };
 
-    this.get_height = function(){
+    this.getHeight = function(){
         return pieces.length;
     };
 
     this.pose = function (piece) {
-        if(actualState !== Lyngk.State.FULL_STACK){
-            if(actualState === Lyngk.State.VACANT){
-                actualState = Lyngk.State.ONE_PIECE;
-                pieces.push(piece);
-            }
-            else{
-                actualState = Lyngk.State.STACK;
-                pieces.push(piece);
-                if(pieces.length === 5){
-                    actualState = Lyngk.State.FULL_STACK;
-                }
+        if(actualState !== Lyngk.State.FULL_STACK) {
+            pieces.push(piece);
+            if(pieces.length >= 3){
+                actualState = pieces.length - Math.floor(pieces.length / 2);
+            }else{
+                actualState = pieces.length;
             }
         }
     };
